@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 function Movies() {
   const peliculas = [
-    { id: 1, titulo: "El Padrino", año: 1972 },
-    { id: 2, titulo: "Pulp Fiction", año: 1994 },
-    { id: 3, titulo: "El Caballero de la Noche", año: 2008 },
-    { id: 4, titulo: "Forrest Gump", año: 1994 },
-    { id: 5, titulo: "Inception", año: 2010 },
+    { id: 1, titulo: "El Padrino", año: 1972, img:"https://sacnkprodpecms.blob.core.windows.net/content/posters/HO00008360.jpg" },
+    { id: 2, titulo: "Pulp Fiction", año: 1994, img:"https://sacnkprodpecms.blob.core.windows.net/content/posters/HO00008360.jpg" },
+    { id: 3, titulo: "El Caballero de la Noche", año: 2008, img:"https://sacnkprodpecms.blob.core.windows.net/content/posters/HO00008360.jpg" },
+    { id: 4, titulo: "Forrest Gump", año: 1994, img:"https://sacnkprodpecms.blob.core.windows.net/content/posters/HO00008360.jpg" },
+    { id: 5, titulo: "Inception", año: 2010, img:"https://sacnkprodpecms.blob.core.windows.net/content/posters/HO00008360.jpg" },
   ];
 
   return (
@@ -20,6 +20,7 @@ function Movies() {
           marginTop: "2rem",
         }}
       >
+        
         {peliculas.map((pelicula) => (
           <Link
             key={pelicula.id}
@@ -28,11 +29,10 @@ function Movies() {
           >
             <div
               style={{
-                border: "1px solid #646cff",
-                padding: "1.5rem",
                 borderRadius: "8px",
                 transition: "transform 0.2s",
                 cursor: "pointer",
+                backgroundColor: "#23211E",                
               }}
               onMouseEnter={(e) =>
                 (e.currentTarget.style.transform = "scale(1.05)")
@@ -41,6 +41,7 @@ function Movies() {
                 (e.currentTarget.style.transform = "scale(1)")
               }
             >
+              <img src={pelicula.img} alt={pelicula.titulo} />
               <h3>{pelicula.titulo}</h3>
               <p>Año: {pelicula.año}</p>
             </div>
