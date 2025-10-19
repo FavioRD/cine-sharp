@@ -39,17 +39,11 @@ function Layout() {
       <main>
         <Outlet />
       </main>
-      {/* <footer
-        style={{
-          padding: "2rem",
-          textAlign: "center",
-          borderTop: "1px solid #646cff",
-          marginTop: "4rem",
-          color: "#888",
-        }}
-      >
-        <p>© 2025 CineSharp - Tu plataforma de cine favorita</p>
-      </footer> */}
+      {<footer>
+        <div className="text-center p-4 text-white">
+          &copy; {new Date().getFullYear()} Cine-Sharp. Todos los derechos reservados.
+        </div>
+      </footer>}
     </div>
   );
 }
