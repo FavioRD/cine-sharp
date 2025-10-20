@@ -4,6 +4,7 @@ export interface MovieDTO {
   imagen: string;
   clasificacion: string;
   duracionMinutos: number;
+  idioma: string;
 }
 
 export interface MovieFuncion {
