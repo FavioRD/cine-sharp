@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useFetchMovieById } from ".././hooks/useFetchMovieById";
 import { useState } from "react";
 import PaymentModal from "../components/PaymentModal";
@@ -8,6 +8,20 @@ function MovieDetail() {
   const movieId = Number(id);
   const { movie } = useFetchMovieById(movieId);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleBuyTickets = () => {
+    const isAuthenticated = !!localStorage.getItem("authToken");
+
+    if (!isAuthenticated) {
+      // Guardar la URL actual para volver después del login
+      localStorage.setItem("returnUrl", location.pathname);
+      navigate("/login");
+    } else {
+      setShowPaymentModal(true);
+    }
+  };
 
   if (!movie)
     return (
@@ -68,7 +82,9 @@ function MovieDetail() {
             </div>
 
             <div>
-              <label className="block font-semibold text-lg mb-2">Idioma:</label>
+              <label className="block font-semibold text-lg mb-2">
+                Idioma:
+              </label>
               <select
                 name="idioma"
                 className="w-full max-w-xs bg-white border border-red-400 rounded-lg p-2 text-gray-800"
@@ -84,8 +100,8 @@ function MovieDetail() {
               <p className="font-semibold text-lg">Av. micasita</p>
             </div>
 
-            <button 
-              onClick={() => setShowPaymentModal(true)}
+            <button
+              onClick={handleBuyTickets}
               className="mt-6 w-fit bg-red-800 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition duration-300"
             >
               Comprar Entradas
