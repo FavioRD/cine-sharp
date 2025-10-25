@@ -21,6 +21,7 @@ export const useFetchSeats = (funcionId: number) => {
   const [seats, setSeats] = useState<SeatsResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+    const url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchSeats = async () => {
@@ -32,9 +33,9 @@ export const useFetchSeats = (funcionId: number) => {
       try {
         setLoading(true);
         setError(null);
-        
-        const response = await fetch(`https://localhost:32775/api/Asientos/funcion/${funcionId}`);
-        
+
+        const response = await fetch(`${url}/Asientos/funcion/${funcionId}`);
+
         if (!response.ok) {
           throw new Error('Error al cargar los asientos');
         }
