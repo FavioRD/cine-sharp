@@ -48,6 +48,7 @@ function PaymentModal({
 }: PaymentModalProps) {
   const { seats: seatsData, loading, error } = useFetchSeats(funcionId);
   const [seats, setSeats] = useState<Seat[]>([]);
+  const url= import.meta.env.VITE_API_URL;
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     email: "",
@@ -340,7 +341,7 @@ function PaymentModal({
       console.log("Enviando pago:", paymentData);
 
       const response = await fetch(
-        "https://localhost:32775/api/Pagos/procesar-pago",
+        `${url}/Pagos/procesar-pago`,
         {
           method: "POST",
           headers: {

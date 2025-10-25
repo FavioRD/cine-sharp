@@ -15,6 +15,7 @@ export const useFetchFunctions = (peliculaId: number) => {
   const [functions, setFunctions] = useState<Function[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const url = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchFunctions = async () => {
@@ -26,9 +27,9 @@ export const useFetchFunctions = (peliculaId: number) => {
       try {
         setLoading(true);
         setError(null);
-        
-        const response = await fetch(`https://localhost:32775/api/Funciones/pelicula/${peliculaId}`);
-        
+
+        const response = await fetch(`${url}/Funciones/pelicula/${peliculaId}`);
+
         if (!response.ok) {
           throw new Error('Error al cargar las funciones');
         }
