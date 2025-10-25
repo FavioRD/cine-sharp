@@ -27,7 +27,7 @@ export const useFetchFunctions = (peliculaId: number) => {
         setLoading(true);
         setError(null);
         
-        const response = await fetch(`https://localhost:32773/api/Funciones/pelicula/${peliculaId}`);
+        const response = await fetch(`https://localhost:32775/api/Funciones/pelicula/${peliculaId}`);
         
         if (!response.ok) {
           throw new Error('Error al cargar las funciones');

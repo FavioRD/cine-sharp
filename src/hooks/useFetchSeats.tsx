@@ -33,7 +33,7 @@ export const useFetchSeats = (funcionId: number) => {
         setLoading(true);
         setError(null);
         
-        const response = await fetch(`https://localhost:32773/api/Asientos/funcion/${funcionId}`);
+        const response = await fetch(`https://localhost:32775/api/Asientos/funcion/${funcionId}`);
         
         if (!response.ok) {
           throw new Error('Error al cargar los asientos');
